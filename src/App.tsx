@@ -106,17 +106,17 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <p className="text-sm text-muted uppercase tracking-widest mb-3">A Abordagem</p>
           <h2 className="font-serif text-3xl md:text-4xl text-navy mb-12">A jornada do contribuinte</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-0 md:gap-0">
             {[
-              { n: '01', t: 'Acolhimento', q: '"Encontrei uma solução que pode te ajudar."' },
-              { n: '02', t: 'Escuta', q: '"Qual sua situação hoje?"' },
-              { n: '03', t: 'Solução pessoal', q: '"No seu caso, consegui 20% de desconto."' },
-              { n: '04', t: 'Resolução', q: '"CPF limpo, nome protegido, família tranquila."' },
+              { n: 'I', t: 'Acolhimento', d: 'Contacto respeitoso, identificação clara, sem pressão. O contribuinte decide se quer ouvir.' },
+              { n: 'II', t: 'Escuta', d: 'Entendemos a realidade financeira antes de propor qualquer solução.' },
+              { n: 'III', t: 'Solução personalizada', d: 'Desconto e parcelamento calculados para o perfil específico do contribuinte.' },
+              { n: 'IV', t: 'Resolução', d: 'Pagamento digital, quitação imediata, CPF regularizado.' },
             ].map((c, i) => (
-              <div key={i} className="bg-white border border-border rounded-lg p-6">
-                <div className="font-serif text-3xl text-blue/20 font-bold mb-3">{c.n}</div>
-                <h4 className="font-semibold text-navy mb-2 text-sm">{c.t}</h4>
-                <p className="text-xs text-muted italic leading-relaxed">{c.q}</p>
+              <div key={i} className={`bg-white p-8 ${i < 3 ? 'md:border-r' : ''} border-b md:border-b-0 border-border`}>
+                <div className="font-serif text-2xl text-navy/15 font-bold mb-4">{c.n}</div>
+                <h4 className="font-semibold text-navy mb-2 text-sm uppercase tracking-wider">{c.t}</h4>
+                <p className="text-sm text-muted leading-relaxed">{c.d}</p>
               </div>
             ))}
           </div>

@@ -1,275 +1,273 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Shield, Brain, MessageCircle, FileSearch, Smartphone, BarChart3, ChevronRight, CheckCircle2, XCircle, Building2, Users, Server, ClipboardList, ArrowRight, Zap, Lock, Target, Clock, Handshake } from 'lucide-react';
+import { Shield, Brain, MessageCircle, FileSearch, Smartphone, BarChart3, ChevronRight, CheckCircle2, Building2, Users, Server, ClipboardList, ArrowRight } from 'lucide-react';
 
-function Section({ children, className = '', delay = 0, id }: { children: React.ReactNode; className?: string; delay?: number; id?: string }) {
+function S({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
-  return (
-    <motion.section ref={ref} id={id} initial={{ opacity: 0, y: 60 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay, ease: 'easeOut' }} className={className}>
-      {children}
-    </motion.section>
-  );
-}
-
-function StatCard({ value, label, color = 'accent' }: { value: string; label: string; color?: string }) {
-  const colors: Record<string, string> = { accent: 'text-accent', danger: 'text-danger', warn: 'text-warn', blue: 'text-blue' };
-  return (
-    <div className="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform">
-      <div className={`text-3xl md:text-4xl font-bold ${colors[color]}`}>{value}</div>
-      <div className="text-xs text-muted mt-2 uppercase tracking-wider">{label}</div>
-    </div>
-  );
+  const v = useInView(ref, { once: true, margin: '-80px' });
+  return <motion.section ref={ref} id={id} initial={{ opacity: 0, y: 40 }} animate={v ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className={className}>{children}</motion.section>;
 }
 
 export default function App() {
   return (
-    <div className="overflow-x-hidden">
+    <div>
 
       {/* NAV */}
-      <nav className="fixed top-0 w-full z-50 p-4 md:p-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="glass rounded-xl px-5 py-3">
-            <span className="font-bold text-lg tracking-widest text-accent">ARRECADA</span>
-            <span className="text-muted">.GOV</span>
+      <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-sm border-b border-border">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-navy rounded-lg flex items-center justify-center"><span className="text-white font-bold text-sm">A</span></div>
+            <span className="font-serif text-xl text-navy font-bold tracking-tight">ARRECADA.GOV</span>
           </div>
-          <a href="#contato" className="glass-accent rounded-full px-6 py-3 text-sm font-semibold text-accent hover:bg-accent/20 transition-colors hidden md:block">
-            Agendar Demonstração
-          </a>
+          <a href="#contato" className="bg-navy text-white px-6 py-2.5 rounded text-sm font-medium hover:bg-navy-light transition-colors hidden md:block">Solicitar Demonstração</a>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center relative px-6 pt-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-transparent to-transparent" />
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <div className="glass-accent rounded-full px-5 py-2 inline-flex items-center gap-2 mb-8">
-              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-sm text-accent">Certificado por parceiro tecnológico oficial</span>
-            </div>
-          </motion.div>
-          <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-4xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
-            Sua prefeitura está{' '}<span className="gradient-text-danger">perdendo milhões</span><br />em dívida ativa
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-sm text-muted uppercase tracking-widest mb-6">Recuperação de Receita Municipal</motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="font-serif text-4xl md:text-6xl leading-tight text-navy mb-8">
+            Sua prefeitura perde<br /><span className="text-danger">milhões por ano</span> em<br />dívida ativa prescrita.
           </motion.h1>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10">
-            Recuperamos receita municipal com inteligência artificial — sem custo para a prefeitura.
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="text-lg text-slate max-w-2xl mb-10 leading-relaxed">
+            Recuperamos receita municipal com inteligência artificial. Sem custo para a prefeitura — você só paga sobre o que for efetivamente recuperado.
           </motion.p>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="flex flex-col md:flex-row gap-4 justify-center mb-16">
-            <a href="#contato" className="bg-accent text-ink px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center gap-3 hover:bg-accent-dark transition-colors group">
-              Solicitar Demonstração <ChevronRight className="group-hover:translate-x-1 transition-transform" size={20} />
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="flex flex-col sm:flex-row gap-4 mb-16">
+            <a href="#contato" className="bg-navy text-white px-8 py-4 rounded text-base font-medium hover:bg-navy-light transition-colors inline-flex items-center gap-2 justify-center">
+              Solicitar Demonstração <ChevronRight size={18} />
             </a>
-            <a href="#como-funciona" className="glass rounded-full px-8 py-4 font-semibold hover:bg-white/10 transition-colors text-center">Como Funciona</a>
+            <a href="#solucao" className="border border-border px-8 py-4 rounded text-base font-medium text-navy hover:bg-warm transition-colors text-center">Como Funciona</a>
           </motion.div>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9 }} className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
-            <StatCard value="40-70%" label="Taxa de recuperação" />
-            <StatCard value="R$ 0" label="Custo inicial" />
-            <StatCard value="30 dias" label="Para começar" />
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="grid grid-cols-3 gap-8 max-w-lg">
+            {[['40–70%','Taxa de\nrecuperação'],['R$ 0','Custo inicial\npara o município'],['30 dias','Para começar\na recuperar']].map(([v,l],i) => (
+              <div key={i}><div className="font-serif text-2xl md:text-3xl text-navy font-bold">{v}</div><div className="text-xs text-muted mt-1 whitespace-pre-line">{l}</div></div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* PROBLEMA */}
-      <Section className="py-24 px-6">
+      <S className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3 text-center">O Problema</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Sua prefeitura perde receita <span className="gradient-text-danger">todos os dias</span></h2>
-          <p className="text-muted text-center mb-16 max-w-xl mx-auto">Dados reais de municípios brasileiros</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <p className="text-sm text-muted uppercase tracking-widest mb-3">O Problema</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">Receita que desaparece todos os dias</h2>
+          <p className="text-slate mb-12 max-w-xl">Dados reais de municípios brasileiros com 200 mil habitantes.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: 'R$ 30-50M', label: 'Dívida Ativa', desc: 'Anos de tributos não cobrados', color: 'danger' },
-              { value: 'R$ 5-8M', label: 'Prescrição/ano', desc: 'Dinheiro que desaparece para sempre', color: 'danger' },
-              { value: '2-3%', label: 'Recuperação', desc: 'Procuradoria sobrecarregada', color: 'warn' },
-              { value: 'R$ 5-10K', label: 'Custo Execução', desc: 'Mais caro que a dívida', color: 'warn' },
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="glass-danger rounded-2xl p-6 hover:scale-105 transition-transform">
-                <div className={`text-2xl md:text-3xl font-bold ${item.color === 'danger' ? 'text-danger' : 'text-warn'}`}>{item.value}</div>
-                <div className="font-semibold mt-2 text-sm">{item.label}</div>
-                <div className="text-xs text-muted mt-1">{item.desc}</div>
-              </motion.div>
+              { v: 'R$ 30–50M', t: 'Dívida Ativa Acumulada', d: 'Anos de tributos sem cobrança efetiva.' },
+              { v: 'R$ 5–8M/ano', t: 'Prescrição Anual', d: 'Após 5 anos, a dívida prescreve. O dinheiro desaparece.' },
+              { v: '2–3%', t: 'Taxa de Recuperação', d: 'Procuradoria com 3 advogados para 50 mil processos.' },
+              { v: 'R$ 5–10K', t: 'Custo por Execução Fiscal', d: 'Cada processo custa mais que a própria dívida.' },
+            ].map((c, i) => (
+              <div key={i} className="bg-danger-bg border border-danger/10 rounded-lg p-6">
+                <div className="font-serif text-2xl text-danger font-bold mb-2">{c.v}</div>
+                <div className="font-medium text-sm text-navy mb-1">{c.t}</div>
+                <div className="text-xs text-muted">{c.d}</div>
+              </div>
             ))}
           </div>
         </div>
-      </Section>
+      </S>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* SOLUÇÃO */}
-      <Section className="py-24 px-6" id="como-funciona">
+      <S className="py-20 px-6" id="solucao">
         <div className="max-w-6xl mx-auto">
-          <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3 text-center">A Solução</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Recuperação inteligente <span className="gradient-text">com IA</span></h2>
+          <p className="text-sm text-muted uppercase tracking-widest mb-3">A Solução</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">Recuperação inteligente com IA</h2>
+          <p className="text-slate mb-12 max-w-xl">Protesto extrajudicial automatizado, negociação por inteligência artificial e pagamento digital.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: <FileSearch size={28} />, title: 'Investigador Digital', desc: 'IA investiga: vivo? Onde mora? Patrimônio? Melhor canal?' },
-              { icon: <Brain size={28} />, title: 'Perfil Comportamental', desc: 'Classifica e adapta abordagem por perfil do devedor.' },
-              { icon: <MessageCircle size={28} />, title: 'Negociador 24/7', desc: 'Chatbot WhatsApp negocia e gera PIX a qualquer hora.' },
-              { icon: <Shield size={28} />, title: 'Protesto Automático', desc: 'Remessa CRA automática. R$ 20-50 vs R$ 5-10K judicial.' },
-              { icon: <Smartphone size={28} />, title: 'Pagamento Digital', desc: 'PIX, boleto, parcelamento. Tudo pelo celular.' },
-              { icon: <BarChart3 size={28} />, title: 'Dashboard Tempo Real', desc: 'Quanto recuperou, quanto falta, prescrição iminente.' },
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="glass rounded-2xl p-8 hover:border-accent/30 transition-all group">
-                <div className="text-accent mb-4 group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-sm text-muted leading-relaxed">{item.desc}</p>
-              </motion.div>
+              { icon: <FileSearch size={22} />, t: 'Investigador Digital', d: 'Antes de cobrar, a IA investiga: status vital, contacto actualizado, patrimônio, perfil.' },
+              { icon: <Brain size={22} />, t: 'Perfil Comportamental', d: 'Classifica cada devedor e adapta tom, canal, horário e proposta de pagamento.' },
+              { icon: <MessageCircle size={22} />, t: 'Agente Reconciliador 24/7', d: 'Negociação humanizada por WhatsApp. O contribuinte parcela e gera PIX a qualquer hora.' },
+              { icon: <Shield size={22} />, t: 'Protesto Automático', d: 'Remessa CRA para protesto extrajudicial. R$ 20–50 vs R$ 5–10K de execução.' },
+              { icon: <Smartphone size={22} />, t: 'Pagamento Digital', d: 'PIX, boleto, parcelamento online. Tudo pelo celular, sem ir à prefeitura.' },
+              { icon: <BarChart3 size={22} />, t: 'Dashboard em Tempo Real', d: 'Quanto recuperou, quanto falta, maiores devedores, prescrição iminente.' },
+            ].map((c, i) => (
+              <div key={i} className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow">
+                <div className="text-blue mb-3">{c.icon}</div>
+                <h3 className="font-semibold text-navy mb-2">{c.t}</h3>
+                <p className="text-sm text-muted leading-relaxed">{c.d}</p>
+              </div>
             ))}
           </div>
         </div>
-      </Section>
+      </S>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* JORNADA */}
-      <Section className="py-24 px-6">
+      <S className="py-20 px-6 bg-warm">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">A jornada do contribuinte</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative">
-            <div className="hidden md:block absolute top-12 left-[12%] right-[12%] h-[2px] bg-gradient-to-r from-accent via-blue to-accent rounded-full" />
+          <p className="text-sm text-muted uppercase tracking-widest mb-3">A Abordagem</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-12">A jornada do contribuinte</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { emoji: '👋', title: 'Acolhimento', quote: '"Encontrei uma solução para te ajudar."' },
-              { emoji: '👂', title: 'Escuta', quote: '"Qual sua situação hoje?"' },
-              { emoji: '🎁', title: 'Solução pessoal', quote: '"No SEU caso, consegui 20% de desconto."' },
-              { emoji: '✅', title: 'Resolução', quote: '"CPF limpo, família tranquila."' },
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}
-                className="glass rounded-2xl p-6 text-center relative z-10">
-                <div className="text-4xl mb-3">{item.emoji}</div>
-                <h4 className="font-bold mb-2 text-sm">{item.title}</h4>
-                <p className="text-xs text-muted italic">{item.quote}</p>
-              </motion.div>
+              { n: '01', t: 'Acolhimento', q: '"Encontrei uma solução que pode te ajudar."' },
+              { n: '02', t: 'Escuta', q: '"Qual sua situação hoje?"' },
+              { n: '03', t: 'Solução pessoal', q: '"No seu caso, consegui 20% de desconto."' },
+              { n: '04', t: 'Resolução', q: '"CPF limpo, nome protegido, família tranquila."' },
+            ].map((c, i) => (
+              <div key={i} className="bg-white border border-border rounded-lg p-6">
+                <div className="font-serif text-3xl text-blue/20 font-bold mb-3">{c.n}</div>
+                <h4 className="font-semibold text-navy mb-2 text-sm">{c.t}</h4>
+                <p className="text-xs text-muted italic leading-relaxed">{c.q}</p>
+              </div>
             ))}
           </div>
         </div>
-      </Section>
+      </S>
 
       {/* COMPROMISSOS */}
-      <Section className="py-24 px-6 bg-gradient-to-b from-ink-light to-ink">
+      <S className="py-20 px-6 bg-navy text-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Nossos 6 compromissos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <h2 className="font-serif text-3xl md:text-4xl mb-12 text-center">Nossos compromissos com o cidadão</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
             {[
-              { icon: <XCircle size={20} />, title: 'Nunca humilhamos.', desc: 'Dignidade sempre.' },
-              { icon: <Lock size={20} />, title: 'Nunca expomos.', desc: 'Dados 100% sigilosos.' },
-              { icon: <Clock size={20} />, title: 'Nunca pressionamos.', desc: 'Porta sempre aberta.' },
-              { icon: <Target size={20} />, title: 'Sempre personalizamos.', desc: 'Proposta para cada realidade.' },
-              { icon: <Zap size={20} />, title: 'Sempre facilitamos.', desc: 'Celular. Zero burocracia.' },
-              { icon: <Handshake size={20} />, title: 'Sempre do lado do cidadão.', desc: 'Melhor saída, não a mais cara.' },
-            ].map((item, i) => (
-              <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="glass-accent rounded-xl p-5 flex items-start gap-4">
-                <div className="text-accent mt-0.5">{item.icon}</div>
-                <div><h4 className="font-bold text-sm">{item.title}</h4><p className="text-xs text-muted mt-1">{item.desc}</p></div>
-              </motion.div>
+              ['Nunca humilhamos.', 'Dignidade independente do valor.'],
+              ['Nunca expomos.', 'Dados 100% sigilosos.'],
+              ['Nunca pressionamos.', '"Agora não" é respeitado.'],
+              ['Sempre personalizamos.', 'Proposta certa para cada realidade.'],
+              ['Sempre facilitamos.', 'Celular. Zero burocracia.'],
+              ['Sempre do lado do cidadão.', 'A melhor saída — não a mais cara.'],
+            ].map(([t, d], i) => (
+              <div key={i} className="flex items-start gap-3 py-3 border-b border-white/10">
+                <CheckCircle2 size={18} className="text-accent mt-0.5 flex-shrink-0" />
+                <div><span className="font-semibold text-sm">{t}</span> <span className="text-sm text-white/60">{d}</span></div>
+              </div>
             ))}
           </div>
         </div>
-      </Section>
+      </S>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* ZERO IMPACTO */}
-      <Section className="py-24 px-6">
+      <S className="py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3 text-center">Zero Impacto</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Resolvemos sem <span className="gradient-text">interferência</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_80px_1fr] gap-4 items-center">
-            <div className="glass rounded-2xl p-6 relative">
-              <div className="absolute -top-3 left-5 bg-ink-light px-3 py-1 rounded-full text-[10px] text-muted uppercase tracking-widest border border-white/10">Prefeitura</div>
-              <div className="space-y-3 mt-4">
-                {[{ icon: <Building2 size={18}/>, l: 'Sistema Tributário', s: 'Betha / IPM / Elotech' },{ icon: <Users size={18}/>, l: 'Equipa', s: 'Mesmas pessoas' },{ icon: <Server size={18}/>, l: 'TI', s: 'Nada instalado' },{ icon: <ClipboardList size={18}/>, l: 'Processos', s: 'Tudo igual' }].map((x,i)=>(
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-                    <span className="text-muted">{x.icon}</span>
-                    <div className="flex-1"><div className="text-sm font-semibold">{x.l}</div><div className="text-[11px] text-muted">{x.s}</div></div>
-                    <span className="text-[10px] bg-accent/10 text-accent px-2 py-1 rounded-full font-semibold">Intocado ✓</span>
-                  </div>
-                ))}
-              </div>
+          <p className="text-sm text-muted uppercase tracking-widest mb-3">Zero Impacto</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">Resolvemos sem interferência</h2>
+          <p className="text-slate mb-12 max-w-xl">O ARRECADA.GOV é um serviço externo. Não substitui, não altera, não interfere em nada que já existe.</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_60px_1fr] gap-6 items-center">
+            <div className="border border-border rounded-lg p-6">
+              <p className="text-xs text-muted uppercase tracking-widest mb-4">Prefeitura — nada muda</p>
+              {[
+                { icon: <Building2 size={18}/>, l: 'Sistema Tributário', s: 'Betha / IPM / Elotech' },
+                { icon: <Users size={18}/>, l: 'Equipa da Fazenda', s: 'Mesmas pessoas, mesmas funções' },
+                { icon: <Server size={18}/>, l: 'Servidores e TI', s: 'Nada instalado' },
+                { icon: <ClipboardList size={18}/>, l: 'Processos e rotinas', s: 'Tudo continua igual' },
+              ].map((x, i) => (
+                <div key={i} className="flex items-center gap-3 py-3 border-b border-border last:border-0">
+                  <span className="text-muted">{x.icon}</span>
+                  <div className="flex-1"><div className="text-sm font-medium">{x.l}</div><div className="text-xs text-muted">{x.s}</div></div>
+                  <span className="text-xs bg-accent-bg text-accent px-2 py-1 rounded font-medium">Intocado</span>
+                </div>
+              ))}
             </div>
-            <div className="hidden md:flex flex-col items-center gap-2 text-muted">
-              <span className="text-[10px]">planilha</span><ArrowRight className="text-accent" size={24}/><ArrowRight className="text-warn rotate-180" size={24}/><span className="text-[10px]">receita</span>
+            <div className="hidden md:flex flex-col items-center gap-1 text-muted">
+              <span className="text-[10px] uppercase tracking-wider">planilha</span>
+              <ArrowRight size={20} className="text-blue" />
+              <ArrowRight size={20} className="text-accent rotate-180" />
+              <span className="text-[10px] uppercase tracking-wider">receita</span>
             </div>
-            <div className="bg-gradient-to-br from-ink-card to-ink-light rounded-2xl p-6 border border-accent/20 relative">
-              <div className="absolute -top-3 left-5 bg-accent px-3 py-1 rounded-full text-[10px] text-ink font-bold uppercase tracking-widest">ARRECADA.GOV</div>
-              <div className="space-y-3 mt-4">
-                {[{ icon: <FileSearch size={18}/>, l: 'Investigação IA' },{ icon: <MessageCircle size={18}/>, l: 'Negociação WhatsApp' },{ icon: <Smartphone size={18}/>, l: 'PIX e Boleto' },{ icon: <BarChart3 size={18}/>, l: 'Dashboard' }].map((x,i)=>(
-                  <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5">
-                    <span className="text-accent">{x.icon}</span><span className="text-sm font-semibold">{x.l}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="bg-navy text-white rounded-lg p-6">
+              <p className="text-xs uppercase tracking-widest mb-4 text-white/50">ARRECADA.GOV</p>
+              {[
+                { icon: <FileSearch size={18}/>, l: 'Investigação por IA' },
+                { icon: <MessageCircle size={18}/>, l: 'Negociação WhatsApp 24/7' },
+                { icon: <Smartphone size={18}/>, l: 'PIX e Boleto digital' },
+                { icon: <BarChart3 size={18}/>, l: 'Dashboard tempo real' },
+              ].map((x, i) => (
+                <div key={i} className="flex items-center gap-3 py-3 border-b border-white/10 last:border-0">
+                  <span className="text-accent">{x.icon}</span>
+                  <span className="text-sm">{x.l}</span>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="glass-accent rounded-2xl p-6 mt-8 text-center">
-            <p className="font-bold text-lg">A prefeitura envia uma planilha. Nós devolvemos receita.</p>
+
+          <div className="bg-accent-bg border border-accent/20 rounded-lg p-6 mt-8 text-center">
+            <p className="font-serif text-lg text-navy font-semibold">A prefeitura envia uma planilha. Nós devolvemos receita.</p>
             <p className="text-sm text-muted mt-2">Nenhum sistema tocado. Nenhum servidor instalado. Nenhum funcionário realocado.</p>
           </div>
         </div>
-      </Section>
+      </S>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* PRICING */}
-      <Section className="py-24 px-6">
-        <div className="max-w-lg mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">Zero risco</h2>
-          <div className="glass rounded-3xl overflow-hidden">
-            <div className="bg-gradient-to-r from-accent-dark to-accent p-8 text-center text-ink">
-              <div className="text-sm font-semibold uppercase tracking-widest mb-2">Success Fee</div>
-              <div className="text-6xl font-bold">12%</div>
-              <div className="text-sm opacity-80 mt-1">sobre o valor recuperado</div>
+      <S className="py-20 px-6 bg-warm">
+        <div className="max-w-md mx-auto">
+          <p className="text-sm text-muted uppercase tracking-widest mb-3 text-center">Modelo Comercial</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-12 text-center">Zero risco para o município</h2>
+          <div className="bg-white border border-border rounded-lg overflow-hidden shadow-sm">
+            <div className="bg-navy text-white p-8 text-center">
+              <p className="text-xs uppercase tracking-widest mb-2 opacity-60">Success Fee</p>
+              <p className="font-serif text-5xl font-bold">12%</p>
+              <p className="text-sm opacity-60 mt-1">sobre o valor efectivamente recuperado</p>
             </div>
-            <div className="p-8 space-y-3">
-              <div className="glass-accent rounded-xl p-4 text-center font-bold text-accent text-sm">Não recuperou = não paga</div>
-              {['Sem taxa de adesão','Sem mensalidade','Sem implantação','Sem prazo mínimo','Plataforma completa','Investigador Digital','Suporte dedicado','Treinamento','Migração de dados'].map((t,i)=>(
-                <div key={i} className="flex items-center gap-3 py-2 border-b border-white/5"><CheckCircle2 size={16} className="text-accent flex-shrink-0"/><span className="text-sm">{t}</span></div>
+            <div className="p-8">
+              <div className="bg-accent-bg text-accent text-center py-3 rounded text-sm font-semibold mb-6">Se não recuperar nada → a prefeitura não paga nada</div>
+              {['Sem taxa de adesão','Sem mensalidade','Sem custo de implantação','Sem prazo mínimo','Plataforma completa incluída','Investigador Digital incluído','Suporte técnico dedicado','Treinamento da equipa','Migração de dados'].map((t,i) => (
+                <div key={i} className="flex items-center gap-3 py-2.5 border-b border-border last:border-0">
+                  <CheckCircle2 size={16} className="text-accent flex-shrink-0" /><span className="text-sm text-slate">{t}</span>
+                </div>
               ))}
             </div>
           </div>
         </div>
-      </Section>
+      </S>
 
-      <div className="line-glow max-w-4xl mx-auto" />
+      <hr className="border-border max-w-6xl mx-auto" />
 
       {/* ROI */}
-      <Section className="py-24 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Projeção — município 200K hab</h2>
-          <div className="glass rounded-2xl overflow-hidden">
-            {[['Dívida ativa','R$ 32.000.000'],['Prescrevendo 12 meses','R$ 5.200.000'],['Protestadas (ano 1)','8.000'],['Recuperação','40-50%'],['Recuperado','R$ 6.400.000'],['Fee 12%','R$ 768.000']].map(([l,v],i)=>(
-              <div key={i} className="flex justify-between px-6 py-4 border-b border-white/5"><span className="text-sm text-muted">{l}</span><span className="font-semibold">{v}</span></div>
+      <S className="py-20 px-6">
+        <div className="max-w-2xl mx-auto">
+          <p className="text-sm text-muted uppercase tracking-widest mb-3">Projecção</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4">Retorno para município de 200 mil habitantes</h2>
+          <p className="text-sm text-muted mb-12">Baseado em dados reais do SICONFI (Tesouro Nacional).</p>
+          <div className="border border-border rounded-lg overflow-hidden">
+            {[['Dívida ativa acumulada','R$ 32.000.000'],['Prescrevendo em 12 meses','R$ 5.200.000'],['Dívidas protestadas (ano 1)','8.000'],['Taxa de recuperação esperada','40–50%'],['Valor recuperado (ano 1)','R$ 6.400.000'],['Fee ARRECADA.GOV (12%)','R$ 768.000']].map(([l,v],i) => (
+              <div key={i} className="flex justify-between px-6 py-4 border-b border-border">
+                <span className="text-sm text-muted">{l}</span><span className="text-sm font-semibold text-navy">{v}</span>
+              </div>
             ))}
-            <div className="flex justify-between px-6 py-5 bg-accent/10"><span className="font-bold text-accent">Líquido prefeitura</span><span className="font-bold text-2xl text-accent">R$ 5.632.000</span></div>
+            <div className="flex justify-between px-6 py-5 bg-accent-bg">
+              <span className="font-semibold text-accent">Receita líquida para a prefeitura</span>
+              <span className="font-serif text-xl font-bold text-accent">R$ 5.632.000</span>
+            </div>
           </div>
-          <p className="text-center text-sm text-muted mt-6">Dados calibrados com SICONFI (Tesouro Nacional)</p>
         </div>
-      </Section>
+      </S>
 
       {/* CTA */}
-      <section className="py-24 px-6 relative" id="contato">
-        <div className="absolute inset-0 bg-gradient-to-t from-accent/10 to-transparent" />
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-5xl font-bold mb-6">
-            Recupere a receita que está <span className="gradient-text">perdendo</span>
+      <section className="py-20 px-6 bg-navy text-white" id="contato">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="font-serif text-3xl md:text-5xl mb-6">
+            Recupere a receita que sua prefeitura está perdendo
           </motion.h2>
-          <p className="text-muted text-lg mb-10">Demonstração gratuita. Sem compromisso.</p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="https://wa.me/5519999999999?text=Quero%20demonstração%20ARRECADA.GOV" className="bg-accent text-ink px-10 py-5 rounded-full font-bold text-lg flex items-center justify-center gap-3 hover:bg-accent-dark transition-all group shadow-[0_0_40px_rgba(26,188,156,0.3)]">
-              Agendar Demonstração <ChevronRight className="group-hover:translate-x-2 transition-transform" />
+          <p className="text-white/60 text-lg mb-10">Demonstração gratuita com dados reais do seu município. Sem compromisso.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://wa.me/5519999999999?text=Quero%20demonstração%20ARRECADA.GOV" className="bg-accent text-white px-10 py-4 rounded font-semibold text-lg inline-flex items-center gap-3 justify-center hover:bg-accent/90 transition-colors">
+              Agendar Demonstração <ChevronRight size={20} />
             </a>
-            <a href="http://31.97.53.231:3333/agente.html" target="_blank" className="glass-accent rounded-full px-10 py-5 font-bold text-accent hover:bg-accent/10 transition-colors">Ver Demo</a>
+            <a href="http://31.97.53.231:3333/agente.html" target="_blank" className="border border-white/20 px-10 py-4 rounded font-semibold hover:bg-white/5 transition-colors">Ver Demo ao Vivo</a>
           </div>
+          <p className="text-xs text-white/30 mt-8">Contratação facilitada via parceiro tecnológico público</p>
         </div>
       </section>
 
-      <footer className="py-12 px-6 border-t border-white/5 text-center">
-        <p className="font-bold text-accent">ARRECADA.GOV</p>
+      {/* FOOTER */}
+      <footer className="py-12 px-6 border-t border-border text-center">
+        <p className="font-serif text-navy font-bold">ARRECADA.GOV</p>
         <p className="text-xs text-muted mt-2">Recuperação Inteligente de Receita Municipal</p>
-        <p className="text-[10px] text-muted/50 mt-4">© 2026 ARRECADA.GOV · LGPD</p>
+        <p className="text-[11px] text-muted/50 mt-4">© 2026 ARRECADA.GOV · Conformidade LGPD (Lei 13.709/2018)</p>
       </footer>
     </div>
   );

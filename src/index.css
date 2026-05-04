@@ -1,27 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0f14;
-  --color-ink-light: #111b27;
-  --color-ink-card: #1a2634;
-  --color-accent: #1abc9c;
-  --color-accent-dark: #16a085;
-  --color-blue: #3498db;
-  --color-danger: #e74c3c;
-  --color-warn: #f39c12;
-  --color-stone: #ecf0f1;
-  --color-muted: #7f8c8d;
-  --font-display: 'Inter', system-ui, sans-serif;
+  --color-navy: #1a2744;
+  --color-navy-light: #2c3e5a;
+  --color-blue: #2563eb;
+  --color-slate: #334155;
+  --color-warm: #f8f7f4;
+  --color-warm-alt: #f1efe9;
+  --color-border: #e2e0da;
+  --color-muted: #64748b;
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fef2f2;
+  --color-accent: #059669;
+  --color-accent-bg: #f0fdf4;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 html { scroll-behavior: smooth }
-body { margin: 0; background: var(--color-ink); color: var(--color-stone); font-family: var(--font-display); -webkit-font-smoothing: antialiased }
+body { margin: 0; background: #fff; color: var(--color-navy); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.65 }
 * { box-sizing: border-box }
 #root { min-height: 100vh }
-
-.glass { background: rgba(255,255,255,0.04); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08) }
-.glass-accent { background: rgba(26,188,156,0.06); backdrop-filter: blur(20px); border: 1px solid rgba(26,188,156,0.15) }
-.glass-danger { background: rgba(231,76,60,0.06); backdrop-filter: blur(16px); border: 1px solid rgba(231,76,60,0.2) }
-.gradient-text { background: linear-gradient(135deg, #1abc9c, #3498db); -webkit-background-clip: text; -webkit-text-fill-color: transparent }
-.gradient-text-danger { background: linear-gradient(135deg, #e74c3c, #f39c12); -webkit-background-clip: text; -webkit-text-fill-color: transparent }
-.line-glow { height: 1px; background: linear-gradient(90deg, transparent, var(--color-accent), transparent) }

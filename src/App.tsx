@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Shield, Brain, MessageCircle, FileSearch, Smartphone, BarChart3, ChevronRight, CheckCircle2, Building2, Users, Server, ClipboardList, ArrowRight } from 'lucide-react';
+import PitchParceiros from './PitchParceiros';
 
 function S({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef(null);
@@ -8,7 +9,19 @@ function S({ children, className = '', id }: { children: React.ReactNode; classN
   return <motion.section ref={ref} id={id} initial={{ opacity: 0, y: 40 }} animate={v ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className={className}>{children}</motion.section>;
 }
 
+/* Tiny path-based router (sem react-router) — preserva o v1 em / e adiciona /parceiros */
 export default function App() {
+  const [path, setPath] = useState(typeof window !== 'undefined' ? window.location.pathname : '/');
+  useEffect(() => {
+    const onPop = () => setPath(window.location.pathname);
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  if (path.startsWith('/parceiros')) return <PitchParceiros />;
+  return <LandingV1 />;
+}
+
+function LandingV1() {
   return (
     <div>
 

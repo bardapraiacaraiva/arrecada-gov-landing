@@ -13,6 +13,24 @@
   --color-danger-bg: #fef2f2;
   --color-accent: #059669;
   --color-accent-bg: #f0fdf4;
+
+  /* Deck (pitch-parceiros) — dark navy + teal */
+  --color-deck-bg: #0a1929;
+  --color-deck-bg-soft: #0f2237;
+  --color-deck-bg-alt: #112a44;
+  --color-deck-teal: #00c896;
+  --color-deck-teal-soft: #14e8b8;
+  --color-deck-teal-dim: #006e54;
+  --color-deck-text: #e8eef7;
+  --color-deck-text-mid: #b4c4d6;
+  --color-deck-muted: #6a7e95;
+  --color-deck-border: rgba(255,255,255,0.08);
+  --color-deck-border-strong: rgba(255,255,255,0.16);
+  --color-deck-card: rgba(255,255,255,0.04);
+  --color-deck-card-hover: rgba(255,255,255,0.07);
+  --color-deck-danger: #f46b5d;
+  --color-deck-amber: #f5b34c;
+
   --font-serif: 'Georgia', 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -21,3 +39,11 @@ html { scroll-behavior: smooth }
 body { margin: 0; background: #fff; color: var(--color-navy); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.65 }
 * { box-sizing: border-box }
 #root { min-height: 100vh }
+
+/* Deck route — full dark theme */
+body.deck-mode { background: var(--color-deck-bg); color: var(--color-deck-text); }
+
+@media print {
+  body.deck-mode .deck-nav, body.deck-mode .deck-footer { display: none !important; }
+  body.deck-mode .deck-slide { page-break-after: always; min-height: 100vh; }
+}

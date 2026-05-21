@@ -790,7 +790,7 @@ function Slide9() {
         <div className="text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--color-deck-teal)' }}>Próximo passo concreto</div>
         <div className="font-serif text-2xl md:text-4xl font-bold mb-4" style={{ color: 'var(--color-deck-text)' }}>Reunião · NDA · Term sheet em 14 dias</div>
         <div className="flex flex-wrap justify-center gap-3 mt-6">
-          <a href="mailto:contato@arrecadagov.app" className="px-6 py-3 rounded-lg font-semibold text-sm transition-colors" style={{ background: 'var(--color-deck-teal)', color: 'var(--color-deck-bg)' }}>contato@arrecadagov.app</a>
+          <a href="mailto:contato@arrecadagov.com.br" className="px-6 py-3 rounded-lg font-semibold text-sm transition-colors" style={{ background: 'var(--color-deck-teal)', color: 'var(--color-deck-bg)' }}>contato@arrecadagov.com.br</a>
           <a href="http://31.97.53.231:3333" target="_blank" className="px-6 py-3 rounded-lg font-semibold text-sm border transition-colors" style={{ borderColor: 'var(--color-deck-border-strong)', color: 'var(--color-deck-text)' }}>Demo ao vivo · 31.97.53.231:3333</a>
         </div>
         <div className="mt-6 text-[10px] uppercase tracking-widest" style={{ color: 'var(--color-deck-muted)' }}>
